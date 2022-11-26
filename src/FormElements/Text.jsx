@@ -11,10 +11,10 @@ export const Text = ({
 
   const changeHandler = (e) => {
     setInputText(e.target.value);
-    // externalChangeHandler(e);
+    externalChangeHandler(e);
   };
 
-  console.log('text input rerendered')
+  console.log("text input rerendered");
 
   return (
     <label htmlFor={inputId}>

@@ -12,10 +12,10 @@ export const Select = ({
 
   const changeHandler = (e) => {
     setSelectedValue(e.target.value);
-    // externalChangeHandler(e);
+    externalChangeHandler(e);
   };
 
-  console.log('select input rerendered')
+  console.log("select input rerendered");
 
   return (
     <label htmlFor={inputId}>
