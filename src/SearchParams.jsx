@@ -18,8 +18,6 @@ const SearchParams = () => {
   const animalChangeHandler = (e) => setAnimal(e.target.value);
   const breedChangeHandler = (e) => setBreed(e.target.value);
 
-  console.log("form rerendered");
-
   const onSubmit = (e) => {
     e.preventDefault();
     requestPets();
