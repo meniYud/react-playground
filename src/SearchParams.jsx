@@ -39,6 +39,7 @@ const SearchParams = () => {
     <div className="search-params">
       <form onSubmit={onSubmit}>
         <Text
+          key={"location"}
           inputId={"location"}
           label={"Location"}
           initialText={""}
@@ -47,6 +48,7 @@ const SearchParams = () => {
         />
 
         <Select
+          key={"animal"}
           inputId={"animal"}
           values={ANIMALS}
           label={"Animal"}
@@ -55,6 +57,7 @@ const SearchParams = () => {
         />
 
         <Select
+          key={"breed"}
           inputId={"breed"}
           disabled={!Boolean(breeds.length)}
           values={breeds}

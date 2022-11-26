@@ -14,8 +14,6 @@ export const Text = ({
     externalChangeHandler(e);
   };
 
-  console.log("text input rerendered");
-
   return (
     <label htmlFor={inputId}>
       {label}

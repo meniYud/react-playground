@@ -9,6 +9,10 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+header.main-header a{
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
 
 .search-params {
   width: 1100px;
