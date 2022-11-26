@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Text } from "./FormElements/Text";
 import { Select } from "./FormElements/Select";
-import Pet from "./Pet";
+import { useBreedList } from "./CustomHooks/useBreedList";
+import { PetsList } from "./PetsList";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
-const BREEDS = [];
 const petsApi = ({ animal, location, breed }) =>
   `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`;
 
@@ -12,6 +12,7 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [pets, setPets] = useState([]);
+  const [breeds] = useBreedList(animal);
 
   const locationChangeHandler = (e) => setLocation(e.target.value);
   const animalChangeHandler = (e) => setAnimal(e.target.value);
@@ -55,8 +56,8 @@ const SearchParams = () => {
 
         <Select
           inputId={"breed"}
-          disabled={!Boolean(BREEDS.length)}
-          values={BREEDS}
+          disabled={!Boolean(breeds.length)}
+          values={breeds}
           label={"Breed"}
           initialValue={""}
           externalChangeHandler={breedChangeHandler}
@@ -64,14 +65,7 @@ const SearchParams = () => {
 
         <button>Submit</button>
       </form>
-      {pets.map((pet) => (
-        <Pet
-          key={pet.id}
-          name={pet.name}
-          animal={pet.animal}
-          breed={pet.breed}
-        />
-      ))}
+      <PetsList pets={pets} />
     </div>
   );
 };
