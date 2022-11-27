@@ -19,11 +19,13 @@ export const Select = ({
     <label htmlFor={inputId}>
       {label}
       <select
+        name={inputId}
         id={inputId}
         disabled={disabled}
         onChange={changeHandler}
         defaultValue={selectedValue}
       >
+        {!initialValue && <option value={''}>select one</option>}
         {values.map((value) => (
           <option key={value} value={value}>
             {value}

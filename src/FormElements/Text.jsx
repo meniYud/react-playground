@@ -18,6 +18,7 @@ export const Text = ({
     <label htmlFor={inputId}>
       {label}
       <input
+        name={inputId}
         id={inputId}
         value={inputText}
         placeholder={placeholder}

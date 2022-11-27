@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import {useQuery} from '@tanstack/react-query';
+import fetchSearch from './api/fetchSearch';
 import { Text } from "./FormElements/Text";
 import { Select } from "./FormElements/Select";
 import { useBreedList } from "./CustomHooks/useBreedList";
@@ -8,11 +10,16 @@ const petsApi = ({ animal, location, breed }) =>
   `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`;
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("");
+  const [requestParams, setRequestParams] = useState({
+    location: '',
+    animal: '',
+    breed: ''
+  });
   const [animal, setAnimal] = useState("");
-  const [breed, setBreed] = useState("");
-  const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
+
+  const results = useQuery(["search", requestParams], fetchSearch);
+  const pets = results?.data?.pets ?? []
 
   const locationChangeHandler = (e) => setLocation(e.target.value);
   const animalChangeHandler = (e) => setAnimal(e.target.value);
@@ -20,18 +27,14 @@ const SearchParams = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    requestPets();
+    const formData = new FormData(e.target)
+    const obj = {
+      animal: formData.get('animal') ?? "",
+      breed: formData.get('location') ?? "",
+      location: formData.get('breed') ?? "",
+    }
+    setRequestParams(obj)
   };
-
-  useEffect(() => {
-    requestPets();
-  }, []);
-
-  async function requestPets() {
-    const res = await fetch(petsApi({ animal, location, breed }));
-    const json = await res.json();
-    setPets(json.pets);
-  }
 
   return (
     <div className="search-params">
@@ -42,7 +45,6 @@ const SearchParams = () => {
           label={"Location"}
           initialText={""}
           placeholder={"Location"}
-          externalChangeHandler={locationChangeHandler}
         />
 
         <Select
@@ -61,7 +63,6 @@ const SearchParams = () => {
           values={breeds}
           label={"Breed"}
           initialValue={""}
-          externalChangeHandler={breedChangeHandler}
         />
 
         <button>Submit</button>
