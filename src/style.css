@@ -88,6 +88,10 @@ footer {
   justify-content: space-around;
 }
 
+.pet.image-container{
+  margin-top: -25%
+}
+
 .image-container {
   clip-path: circle(50% at 50% 50%);
   width: 100px;

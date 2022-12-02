@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
+import AdoptedPetContext from "./AdoptedPetContext";
+import { AdoptedPet } from "./AdoptedPet";
 import fetchSearch from "./api/fetchSearch";
 import { Text } from "./FormElements/Text";
 import { Select } from "./FormElements/Select";
@@ -10,6 +12,7 @@ const petsApi = ({ animal, location, breed }) =>
   `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`;
 
 const SearchParams = () => {
+  const [adoptedPet] = useContext(AdoptedPetContext);
   const [requestParams, setRequestParams] = useState({
     location: "",
     animal: "",
@@ -39,6 +42,7 @@ const SearchParams = () => {
   return (
     <div className="search-params">
       <form onSubmit={onSubmit}>
+        <AdoptedPet adoptedPet={adoptedPet} />
         <Text
           key={"location"}
           inputId={"location"}
