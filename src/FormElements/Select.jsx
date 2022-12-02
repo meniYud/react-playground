@@ -25,7 +25,7 @@ export const Select = ({
         onChange={changeHandler}
         defaultValue={selectedValue}
       >
-        {!initialValue && <option value={''}>select one</option>}
+        {!initialValue && <option value={""}>select one</option>}
         {values.map((value) => (
           <option key={value} value={value}>
             {value}
