@@ -11,7 +11,9 @@ export const Text = ({
 
   const changeHandler = (e) => {
     setInputText(e.target.value);
-    externalChangeHandler(e);
+    if (externalChangeHandler) {
+      externalChangeHandler(e);
+    }
   };
 
   return (

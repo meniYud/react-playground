@@ -12,7 +12,9 @@ export const Select = ({
 
   const changeHandler = (e) => {
     setSelectedValue(e.target.value);
-    externalChangeHandler(e);
+    if (externalChangeHandler) {
+      externalChangeHandler(e);
+    }
   };
 
   return (
