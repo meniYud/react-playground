@@ -19,13 +19,20 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null);
   return (
-    <>
+    <div
+      className="m-0 p-0"
+    >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <AdoptedPetContext.Provider value={adoptedPet}>
             <ErrorBoundary>
-              <header className="main-header">
-                <Link to="/">Playground</Link>
+              <header className="main-header mb-10 w-full bg-gradient-to-b from-yellow-400 via-orange-500 to-red-500 p-7 text-center">
+                <Link
+                  to="/"
+                  className="text-6xl text-white hover:text-gray-200"
+                >
+                  Playground
+                </Link>
               </header>
               <Routes>
                 <Route path="/details/:id" element={<Details />} />
@@ -35,7 +42,7 @@ const App = () => {
           </AdoptedPetContext.Provider>
         </BrowserRouter>
       </QueryClientProvider>
-    </>
+    </div>
   );
 };
 

@@ -20,6 +20,8 @@ export const Text = ({
     <label htmlFor={inputId}>
       {label}
       <input
+        type="text"
+        className="search-input"
         name={inputId}
         id={inputId}
         value={inputText}

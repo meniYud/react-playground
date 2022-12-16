@@ -17,11 +17,14 @@ export const Select = ({
     }
   };
 
+  const classnames = `search-input ${disabled ? 'grayed-out-disabled' : ''}`
+
   return (
     <label htmlFor={inputId}>
       {label}
       <select
         name={inputId}
+        className={classnames}
         id={inputId}
         disabled={disabled}
         onChange={changeHandler}

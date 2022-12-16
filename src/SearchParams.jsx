@@ -40,8 +40,11 @@ const SearchParams = () => {
   };
 
   return (
-    <div className="search-params">
-      <form onSubmit={onSubmit}>
+    <div className="my-0 mx-auto w-11/12">
+      <form
+        className="mb-10 flex flex-col items-center justify-center rounded-lg bg-gray-200 p-10 shadow-lg"
+        onSubmit={onSubmit}
+      >
         <AdoptedPet adoptedPet={adoptedPet} />
         <Text
           key={"location"}
@@ -69,7 +72,7 @@ const SearchParams = () => {
           initialValue={""}
         />
 
-        <button>Submit</button>
+        <button className="rounded px-6 py-2 text-white hover:opacity-50 border-none bg-orange-500">Submit</button>
       </form>
       <PetsList pets={pets} />
     </div>

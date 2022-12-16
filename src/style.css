@@ -1,141 +1,35 @@
-* {
-  box-sizing: border-box;
-  color: #333;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  body{
+    font-family: "Comic Sans MS";
+    background-color: #81a69b;
+    background-image: url(../assets/main-bg.jpg);
+    margin: 0;
+  }
 }
 
-body {
-  background-color: #81a69b;
-  background-image: url(../assets/main-bg.jpg);
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-header.main-header a{
-  font-size: 3rem;
-  margin-bottom: 1rem;
+@layer components{
+  .search-input {
+    @apply w-60 mb-5 block;
+  }
 }
 
-.error-container{
-  display: flex;
-  margin: auto;
-  width: 25%;
-  flex-direction: column;
-  align-items: center;
-}
-img.error-image{
-  mix-blend-mode: color-burn;
-}
-
-.search-params {
-  width: 1100px;
-  margin: 0 auto;
-}
-
-.search-params form {
-  border-radius: 6px;
-  background: #faeff0;
-  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
-  width: 360px;
-  margin: 0px 25px 0px 0px;
-  padding: 35px 15px 15px 15px;
-  float: left;
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  right: 0.5%;
-}
-
-.search {
-  border-radius: 6px;
-  background: #faeff0;
-  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
-  width: 715px;
-  padding: 15px;
-  float: left;
-  margin-bottom: 25px;
-}
-
-.details {
-  width: 1100px;
-  margin: 0 auto;
-  padding: 15px;
-  margin-bottom: 25px;
-  border-radius: 6px;
-  background: #faeff0;
-  box-shadow: 0px 0px 12px #aaa, -0px -0px 12px #fff;
-}
-
-.pet {
-  width: 100%;
-  height: 130px;
-  display: block;
-  overflow: hidden;
-  margin: 25px 0;
-  border-bottom: #333 2px solid;
-}
-
-.pet img {
-  width: 100px;
-  min-height: 100px;
-}
-
-.info {
-  float: left;
-  width: 80%;
-  height: 100px;
-  padding-top: 10px;
-  flex-direction: column;
-  justify-content: space-around;
+@layer utilities{
+  .grayed-out-disabled {
+    @apply disabled:opacity-50;
+  }
 }
 
 .pet.image-container{
-  margin-top: -25%
-}
-
-.image-container {
+  margin-top: -25%;
   clip-path: circle(50% at 50% 50%);
   width: 100px;
   height: 100px;
   float: left;
   margin: 0px 20px 0px 10px;
-}
-
-.pet h1 {
-  white-space: nowrap;
-  font-weight: normal;
-  font-size: 30px;
-  color: #333;
-  width: 95%;
-  overflow: hidden;
-  margin: 0;
-  text-overflow: ellipsis;
-}
-
-
-.pet h2 {
-  white-space: nowrap;
-  font-weight: normal;
-  font-size: 20px;
-  margin: 0;
-  text-overflow: ellipsis;
-}
-
-header a {
-  color: #333;
-  font-size: 3px;
-  text-decoration: none;
-  font-weight: bold;
-  display: block;
-  padding-bottom: 10px;
-}
-
-header {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 1100px;
-  margin: 0 auto;
-  padding: 20px 0px 0px 0px;
 }
 
 .details p {
@@ -187,81 +81,50 @@ header {
   opacity: 0.6;
 }
 
-.search-params label {
-  display: block;
-  width: 60px;
-}
-
-.search-params input,
-.search-params select {
-  margin-bottom: 30px;
-  font-size: 18px;
-  height: 30px;
-  width: 325px;
-}
-
-.search-params button,
-#modal button,
-#modal a,
-.details button {
-  background-color: #ad343e;
-  padding: 5px 25px;
-  color: white;
-  font-size: 18px;
-  border: #333 1px solid;
-  border-radius: 5px;
-  display: block;
-  margin: 0 auto;
-  cursor: pointer;
-}
-
-#modal a {
-  display: inline-block;
-  margin-right: 15px;
-  text-decoration: none;
-}
-
-.search-params button:hover {
-  background-color: #122622;
-}
-
-.search-params button:active {
-  background-color: #5f1d22;
-}
-
-.search-params button:focus {
-  border: 1px solid cornflowerblue;
-}
-
-#modal {
-  background-color: rgba(0, 0, 0, 0.9);
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
+.loading-pane {
   align-items: center;
-}
-
-#modal:empty {
-  display: none;
-}
-
-#modal > div {
-  background-color: white;
-  max-width: 500px;
+  justify-content: center;
+  display: flex;
   padding: 15px;
-  text-align: center;
-  border-radius: 30px;
-  background: #faeff0;
 }
 
-#modal .buttons button {
-  display: inline-block;
-  margin-right: 15px;
+@media only screen and (max-width: 600px) {
+  .pet {
+    height: 200px;
+  }
+
+  .info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .image-container {
+    margin: 0 auto;
+    float: none;
+  }
+  .carousel-smaller > img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.loader {
+  font-size: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.mini.loading-pane {
+  height: 34px;
+}
+
+.mini .loader {
+  font-size: 34px;
 }
 
 @media only screen and (max-width: 1129px) {
@@ -317,63 +180,67 @@ header {
   }
 }
 
-@media only screen and (max-width: 945px) {
-  .search-params {
-    width: 95%;
-  }
-
-  .search {
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .pet {
-    height: 200px;
-  }
-
-  .info {
-    width: 100%;
-    text-align: center;
-  }
-
-  .image-container {
-    margin: 0 auto;
-    float: none;
-  }
-  .carousel-smaller > img {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-.loading-pane {
-  align-items: center;
-  justify-content: center;
+#modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  background-color: white;
+  max-width: 500px;
   padding: 15px;
+  text-align: center;
+  border-radius: 30px;
+  background: #faeff0;
 }
 
-form .pet {
-  float: unset;
-  margin: 0 auto;
+#modal .buttons button {
+  display: inline-block;
+  margin-right: 15px;
 }
 
-.loader {
-  font-size: 100px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(-360deg);
+.search-params button,
+  #modal button,
+  #modal a,
+  .details button {
+    background-color: #ad343e;
+    padding: 5px 25px;
+    color: white;
+    font-size: 18px;
+    border: #333 1px solid;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
   }
-}
-
-.mini.loading-pane {
-  height: 34px;
-}
-
-.mini .loader {
-  font-size: 34px;
-}
+  
+  #modal a {
+    display: inline-block;
+    margin-right: 15px;
+    text-decoration: none;
+  }
+  
+  .search-params button:hover {
+    background-color: #122622;
+  }
+  
+  .search-params button:active {
+    background-color: #5f1d22;
+  }
+  
+  .search-params button:focus {
+    border: 1px solid cornflowerblue;
+  }
+  
