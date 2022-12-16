@@ -72,7 +72,9 @@ const SearchParams = () => {
           initialValue={""}
         />
 
-        <button className="rounded px-6 py-2 text-white hover:opacity-50 border-none bg-orange-500">Submit</button>
+        <button className="rounded border-none bg-orange-500 px-6 py-2 text-white hover:opacity-50">
+          Submit
+        </button>
       </form>
       <PetsList pets={pets} />
     </div>

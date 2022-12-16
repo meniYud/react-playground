@@ -17,7 +17,7 @@ export const Select = ({
     }
   };
 
-  const classnames = `search-input ${disabled ? 'grayed-out-disabled' : ''}`
+  const classnames = `search-input ${disabled ? "grayed-out-disabled" : ""}`;
 
   return (
     <label htmlFor={inputId}>
