@@ -23,6 +23,15 @@
   }
 }
 
+footer{
+  display: block;
+  text-align: right;
+  margin: 15px 0;
+}
+footer > a {
+  margin: 0 15px;
+}
+
 .pet.image-container{
   margin-top: -25%;
   clip-path: circle(50% at 50% 50%);
@@ -120,7 +129,7 @@
 }
 
 .mini.loading-pane {
-  height: 34px;
+  height: 15px;
 }
 
 .mini .loader {

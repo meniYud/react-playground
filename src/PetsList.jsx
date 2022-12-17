@@ -2,10 +2,13 @@ import React from "react";
 import Pet from "./Pet";
 
 export const PetsList = ({ pets }) => {
+  const classname = `grid grid-cols-1 gap-4 ${
+    pets.length ? "sm:grid-cols-2 lg:grid-cols-3" : ""
+  }`;
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className={classname}>
       {!pets.length ? (
-        <h1>no pets found</h1>
+        <h1 className="m-auto">no pets found</h1>
       ) : (
         pets.map((pet) => (
           <Pet
